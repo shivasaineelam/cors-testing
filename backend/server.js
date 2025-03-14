@@ -15,14 +15,18 @@ app.use(
 app.get("/hello", (req, res) => {
     // Set a cookie with a token
 
-    res.cookie('token', 'tight', {
-        httpOnly: true,
-        secure: true, 
-        sameSite: 'None', 
-        maxAge: 3600000 * 2, 
-        path:'/'
-      });
-      
+    const expiryDate = new Date();
+expiryDate.setTime(expiryDate.getTime() + (3600000 * 2)); // 2 hours from now
+
+res.cookie('token', 'tight', {
+  httpOnly: true,
+  secure: true,
+  sameSite: 'None',
+  expires: expiryDate,
+  maxAge: 3600000 * 2, // 2 hours
+  path: '/', // Ensure the cookie is available across all paths
+});
+
       // Send the JSON response
     res.json({ "hello": "world" });
   });
