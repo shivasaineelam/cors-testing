@@ -20,6 +20,7 @@ app.get("/hello", (req, res) => {
         secure: true, 
         sameSite: 'None', 
         maxAge: 3600000 * 2, 
+        path:'/'
       });
       
       // Send the JSON response
