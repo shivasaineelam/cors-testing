@@ -18,7 +18,7 @@ app.get("/hello", (req, res) => {
     res.cookie('token', 'tight', {
         httpOnly: true,
         secure: true, 
-        sameSite: 'Strict', 
+        sameSite: 'None', 
         maxAge: 3600000 * 2, 
       });
       
